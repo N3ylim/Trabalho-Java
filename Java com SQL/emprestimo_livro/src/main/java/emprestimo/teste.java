@@ -38,7 +38,7 @@ public class teste {
             // empréstimo
             statement.executeUpdate("CREATE TRIGGER IF NOT EXISTS atualizaStatusEmprestimo AFTER INSERT ON Emprestimo FOR EACH ROW " +
             "BEGIN " +
-            "UPDATE Livro SET status = 'Emprestado' WHERE id = NEW.id_livro; " +
+            "UPDATE Livro SET status = 'emprestado' WHERE id = NEW.id_livro; " +
             "END");
     
             // crie o Trigger Atualização do Status do Livro para "disponível" ao devolver
@@ -46,7 +46,7 @@ public class teste {
             statement.executeUpdate("CREATE TRIGGER IF NOT EXISTS atualizaStatusDevolucao AFTER UPDATE ON Emprestimo FOR EACH ROW " +
             "BEGIN " +
             "IF NEW.status = 'Devolvido' THEN " +
-            "UPDATE Livro SET status = 'Disponível' WHERE id = NEW.id_livro; " +
+            "UPDATE Livro SET status = 'disponível' WHERE id = NEW.id_livro; " +
             "END IF; " +
             "END");
     
